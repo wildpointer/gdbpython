@@ -1,3 +1,14 @@
+linklist.c: the C code used to create a link list. We ignore a lot of things, for example free() memory, check return value.
+printlist.py: the python script used to demo how to print a link list, 
+              1) Demo how to read symbolic value(l)
+              2) Read memory content
+              3) Parse memory content using python struct.unpack
+
+The code is only tested on x86_64 Linux. There are a lot of hardcoded value.
+
+
+Here is command line showing how to play with it:
+
 root@localhost ~/gdbpython/linklist
 # gcc linklist.c -g -ggdb -o linklist
 
