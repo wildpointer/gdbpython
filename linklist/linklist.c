@@ -33,7 +33,7 @@ void print_list(node *l)
 int main()
 {
     node l = NODE_INITIALIZER;
-    int i = 10;
+    int i = 100;
     while(i--) {
         int d = rand() % 100;
         printf("Generated: %d\n", d);
