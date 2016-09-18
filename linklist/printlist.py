@@ -5,12 +5,19 @@ import struct
 class node:
     def __init__(self, addr):
         self.addr = addr
+        self.sizeof = 0
         self.data = 0
+        self.data_offset = 0
         self.next = 0
+        self.next_offset = 0
 
         inferior = gdb.inferiors()[0]
 
-        mem = inferior.read_memory(addr, 16);
+        self.data_offset = gdb.parse_and_eval("(int)&((struct node *)0)->data")
+        self.next_offset = gdb.parse_and_eval("(int)&((struct node *)0)->next")
+
+        self.sizeof = gdb.lookup_type("struct node").sizeof
+        mem = inferior.read_memory(addr, self.sizeof)
         (self.data, _, self.next) = struct.unpack("<IIQ", mem)
 
     def get_next(self):
